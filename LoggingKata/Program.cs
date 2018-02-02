@@ -16,7 +16,10 @@ namespace LoggingKata
 
         static void Main(string[] args)
         {
-            
+            Logger.Info("Logging Started");
+            var path = Environment.CurrentDirectory + "\\Taco_Bell-US-AL-Alabama.csv";
+            Logger.Debug("Created a path to cvs file");
+
             if (args.Length == 0)
             {
                 Console.WriteLine("You must provide a filename as an argument");
