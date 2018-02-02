@@ -19,7 +19,7 @@ namespace LoggingKata.Test
             var line = "";
             var parser = new TacoParser();
 
-            // Act
+            // Act 
             var result = parser.Parse(line);
 
             // assert

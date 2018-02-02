@@ -16,6 +16,7 @@ namespace LoggingKata
 
         static void Main(string[] args)
         {
+            
             if (args.Length == 0)
             {
                 Console.WriteLine("You must provide a filename as an argument");
