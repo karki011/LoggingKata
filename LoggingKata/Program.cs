@@ -13,12 +13,14 @@ namespace LoggingKata
         //Why do you think we use ILog?
         private static readonly ILog Logger =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+       
         static void Main(string[] args)
         {
             Logger.Info("Logging Started");
             var path = Environment.CurrentDirectory + "\\Taco_Bell-US-AL-Alabama.csv";
+
             Logger.Debug("Created a path to cvs file");
+            var filePath = File.ReadAllLines(path);
 
             if (args.Length == 0)
             {
