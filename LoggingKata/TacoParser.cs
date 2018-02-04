@@ -11,11 +11,6 @@ namespace LoggingKata
     /// </summary>
     public class TacoParser
     {
-        public TacoParser()
-        {
-
-        }
-
         private static readonly ILog Logger =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -29,13 +24,22 @@ namespace LoggingKata
             }
 
             Logger.Info("About to initialize object to get name and location of tacobell.");
-            var tacoBell = new TacoBell
-            {
-                Name = cells[2],
-                Location = new Point(double.Parse(cells[0]), double.Parse(cells[1]))
-            };
 
-            return tacoBell;
+            try
+            {
+                var tacoBell = new TacoBell
+                {
+                    Name = cells[2],
+                    Location = new Point(double.Parse(cells[0]), double.Parse(cells[1]))
+                };
+
+                return tacoBell;
+            }
+            catch (Exception e)
+            {
+                Logger.Error("Check to see if cells.Lenght < 3.");
+                return null;
+            }
         }
     }
 }
