@@ -15,6 +15,7 @@ namespace LoggingKata
         public ITrackable Parse(string line)
         {
             var cells = line.Split(',');
+             
             if (string.IsNullOrEmpty(line))
             {
                 return null;

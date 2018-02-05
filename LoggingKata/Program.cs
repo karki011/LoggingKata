@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using log4net;
 using System.IO;
+using System.Net;
 using Geolocation;
 
 namespace LoggingKata
@@ -17,6 +18,11 @@ namespace LoggingKata
         static void Main(string[] args)
         {
             Console.WriteLine("Program started");
+            var hostName = Dns.GetHostName();
+            Console.WriteLine(hostName);
+            var myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+            Console.WriteLine($"My ip: {myIP}");
+
             Logger.Info("Logging Started");
             var path = Environment.CurrentDirectory + "\\Taco_Bell-US-AL-Alabama.csv";
             var lines = File.ReadAllLines(path);
