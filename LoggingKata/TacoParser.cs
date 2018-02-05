@@ -15,6 +15,11 @@ namespace LoggingKata
         public ITrackable Parse(string line)
         {
             var cells = line.Split(',');
+            if (string.IsNullOrEmpty(line))
+            {
+                return null;
+            }
+          
             if (cells.Length < 3)
             {
                 Logger.Error("Length is less than 3, something went wrong");
@@ -25,13 +30,13 @@ namespace LoggingKata
 
             try
             {
-                var tacoBell = new TacoBell
+                var lon = double.Parse(cells[0]);
+                var lat = double.Parse(cells[1]);
+                return new TacoBell
                 {
-                    Name = cells[2].Split('.')[0].Replace("/", "").Replace("\"", ""),
-                    Location = new Point(double.Parse(cells[0]), double.Parse(cells[1]))
+                    Name = cells.Length > 2 ? cells[2]: null,
+                    Location = new Point(lat, lon)
                 };
-                Logger.Info("Should return Taco location and name.");
-                return tacoBell;
             }
             catch (Exception e)
             {
