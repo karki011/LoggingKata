@@ -74,10 +74,12 @@ namespace LoggingKata
 
             if (locationA == null || locationB == null)
             {
+                Logger.Error("failed to find locations");
                 Console.WriteLine("Sorry, try aging. Failed to find the locations.");
                 Console.ReadLine();
                 return;
             }
+            Logger.Info("Write furthest Taco.");
             Console.WriteLine($"The furthest Tacobell are: {locationA.Name} and  {locationB.Name}.");
             Console.WriteLine($"They are {distance} miles apart.");
             Console.ReadLine();
