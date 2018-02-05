@@ -12,7 +12,7 @@ namespace LoggingKata.Test
     public class TacoParserTestFixture
     {
         [Test]
-        public void ShouldNotParseLine()
+        public void ShouldParseLine()
         {
             //Arrange
             var tacoParser = new TacoParser();
@@ -23,27 +23,33 @@ namespace LoggingKata.Test
 
             // assert
             Assert.IsNotNull(result);
+
         }
 
         [Test]
-        public void ShouldParseLine()
+        public void ShouldNotParseLine()
         {
             //Arrange
             var tacoParser = new TacoParser();
+            var empty = "";
+
 
             var twoOutOfThreeCoordinates = "- 84.677017, 34.073638";
-            var lattitudeIsNotNumber = "Latitiude, -84.677017, tacoBell";
+            var latitudeIsNotNumber = "Latitiude, -84.677017, tacoBell";
             var longitudeIsNotNumber = "- 84.677017, Longitude, tacobell";
 
             //Act
-            var twoOutOfThreeCoordinatesValue = tacoParser.Parse(twoOutOfThreeCoordinates);
-            var lattiudeIsNotNumberValue = tacoParser.Parse(lattitudeIsNotNumber);
-            var longitudeIsNotNumberValue = tacoParser.Parse(longitudeIsNotNumber);
+            var twoOutOfThreeCoordinatesValue = tacoParser.Parse(twoOutOfThreeCoordinates +" should parse.");
+            var latiudeIsNotNumberValue = tacoParser.Parse(latitudeIsNotNumber +" Should not parse.");
+            var longitudeIsNotNumberValue = tacoParser.Parse(longitudeIsNotNumber + "Should not parse.");
+            var emptyCoord = tacoParser.Parse(empty);
+
 
             //Assert
             Assert.IsNull(twoOutOfThreeCoordinatesValue);
-            Assert.IsNull(lattiudeIsNotNumberValue);
+            Assert.IsNull(latiudeIsNotNumberValue);
             Assert.IsNull(longitudeIsNotNumberValue);
+            Assert.IsNull(emptyCoord);
         }
     }
 }

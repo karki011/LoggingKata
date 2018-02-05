@@ -6,9 +6,7 @@ using System.Linq;
 
 namespace LoggingKata
 {
-    /// <summary>
-    /// Parses a POI file to locate all the TacoBells
-    /// </summary>
+
     public class TacoParser
     {
         private static readonly ILog Logger =
@@ -29,15 +27,15 @@ namespace LoggingKata
             {
                 var tacoBell = new TacoBell
                 {
-                    Name = cells[2],
+                    Name = cells[2].Split('.')[0].Replace("/", "").Replace("\"", ""),
                     Location = new Point(double.Parse(cells[0]), double.Parse(cells[1]))
                 };
-
+                Logger.Info("Should return Taco location and name.");
                 return tacoBell;
             }
             catch (Exception e)
             {
-                Logger.Error("Check to see if cells.Lenght < 3.");
+                Logger.Error("Check to see if cells.Length < 3.");
                 return null;
             }
         }

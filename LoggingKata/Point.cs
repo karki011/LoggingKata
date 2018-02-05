@@ -8,8 +8,8 @@
 
         public Point(double latitude, double longitude)
         {
-            Longitude = longitude;
             Latitude = latitude;
+            Longitude = longitude;
         }
 
     }
