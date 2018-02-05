@@ -22,7 +22,7 @@ namespace LoggingKata.Test
             var result = tacoParser.Parse(testCoordination);
 
             // assert
-            Assert.IsNotNull(result);
+            Assert.Null(result);
 
         }
 
@@ -31,9 +31,8 @@ namespace LoggingKata.Test
         {
             //Arrange
             var tacoParser = new TacoParser();
+
             var empty = "";
-
-
             var twoOutOfThreeCoordinates = "- 84.677017, 34.073638";
             var latitudeIsNotNumber = "Latitiude, -84.677017, tacoBell";
             var longitudeIsNotNumber = "- 84.677017, Longitude, tacobell";

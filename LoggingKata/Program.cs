@@ -19,7 +19,6 @@ namespace LoggingKata
             Console.WriteLine("Program started");
             Logger.Info("Logging Started");
             var path = Environment.CurrentDirectory + "\\Taco_Bell-US-AL-Alabama.csv";
-
             var lines = File.ReadAllLines(path);
 
             if (lines.Length == 0)
